@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Enter Department ID" [(ngModel)]="departmentId">
+        <button class="btn btn-primary mt-2" (click)="getEmployees()" >Get Employees</button>
+      </div>
+    </div>
+  
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <table class="table table-striped" *ngIf="employees && employees.length > 0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Salary</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees" (click)="viewEmployee(employee)">
+              <td>{{ employee.id }}</td>
+              <td>{{ employee.name }}</td>
+              <td>{{ employee.position }}</td>
+              <td>{{ employee.salary }}</td>
+              <td>{{ employee.email }}</td>
+              <td>
+                <!-- <button class="btn btn-warning btn-sm" (click)="editEmployee(employee, $event)">Edit</button> -->
+                <button class="btn btn-danger btn-sm" (click)="deleteEmployee(employee.id, $event)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
